@@ -1,5 +1,6 @@
 function sum(a, b) {
-  if (typeof a !== "number" || typeof b !== "number") {
+ if (!(a instanceof Number) || !(b instanceof Number))
+ {
 
     console.log("Los datos de entrada no son adecuados");
     return;
@@ -9,7 +10,8 @@ function sum(a, b) {
 
 // Factorial of a Number
 function factorial(n) {
-  if (typeof n !== "number" || !Number.isInteger(n) || n < 0) {
+  if (n !== parseFloat(n) || Math.floor(n) !== n || n < 0)
+ {
     console.log("Los datos de entrada no son adecuados");
     return;
   }
@@ -24,10 +26,18 @@ function factorial(n) {
 // Find the Largest Number
 function findLargest(arr) {
   if (!Array.isArray(arr) || arr.length === 0 || arr.some(item => typeof item !== "number")) {
-    console.log("Los datos de entrada no son adecuados");
-    return;
+  console.log("Los datos de entrada no son adecuados");
+  return;
+}
+
+let max = arr[0];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > max) {
+    max = arr[i];
   }
-  return Math.max(...arr);
+}
+return max;
+
 }
 
 // Count Vowels in a String
@@ -41,7 +51,8 @@ function countVowels(str) {
 
 // Check if a Number is Prime
 function isPrime(n) {
-  if (typeof n !== "number" || !Number.isInteger(n) || n < 2) {
+  if (n !== parseFloat(n) || Math.floor(n) !== n || n < 2)
+ {
     console.log("Los datos de entrada no son adecuados");
     return;
   }
